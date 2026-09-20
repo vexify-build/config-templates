@@ -1,0 +1,174 @@
+[user]
+    name = Your Name
+    email = your.email@example.com
+    signingkey =
+
+[core]
+    editor = vim
+    autocrlf = input
+    excludesfile = ~/.gitignore-global
+    pager = less -FRX
+    whitespace = trailing-space,space-before-tab
+
+[alias]
+    # Status and info
+    st = status -sb
+    co = checkout
+    cob = checkout -b
+    
+    # Branch
+    br = branch -vv
+    bra = branch -a
+    brd = branch -d
+    brD = branch -D
+    
+    # Commit
+    ci = commit
+    amend = commit --amend --no-edit
+    amend-msg = commit --amend
+    rebase-i = rebase -i
+    rebase-cont = rebase --continue
+    rebase-abort = rebase --abort
+    
+    # Log
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    ll = log --stat --pretty=format:'%Cred%h%Creset %s%n%w(80)%b' --abbrev-commit
+    ls = log --pretty=format:'%C(yellow)%h%Creset - %C(bold blue)%an%Creset %C(bold)%s%Creset %C(dim)%cr%Creset' --abbrev-commit
+    lsg = log --oneline --decorate --graph --all
+    
+    # Diff
+    d = diff
+    dc = diff --cached
+    dh = diff HEAD
+    dl = diff --stat
+    ds = diff --staged
+    
+    # Stash
+    sl = stash list
+    ss = stash push
+    sa = stash apply
+    sd = stash drop
+    sp = stash pop
+    
+    # Reset
+    rest = reset --soft
+    resth = reset --hard
+    
+    # Tags
+    tags = tag -l
+    tagd = tag -d
+    tagr = tag -d origin/ && git tag -d
+    
+    # Submodules
+    subup = submodule update --init --recursive
+    subpu = submodule foreach git pull origin main
+    
+    # Others
+    ignored = ls-files -i --exclude-standard
+    unstage = reset HEAD --
+    uncommit = reset --soft HEAD~1
+    last = log -1 HEAD
+    contribute = shortlog -sn --no-merges
+    aliases = config --get-regexp alias
+    save = stash push -m
+    pop = stash pop
+    wip = commit -m "WIP"
+    unwip = reset --soft HEAD~1
+    aliases = config --get-regexp alias.
+
+[color]
+    ui = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+
+[color "branch"]
+    current = green reverse
+    local = green
+    remote = yellow
+    plain = normal
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = green bold
+    changed = yellow bold
+    untracked = red bold
+
+[pull]
+    rebase = false
+    ff = only
+
+[push]
+    default = current
+    autoSetupRemote = true
+
+[fetch]
+    prune = true
+    pruneTags = true
+
+[rebase]
+    autoStash = true
+    updateBackend = true
+    autoSquash = fixup
+    autoRebase = interactive
+
+[merge]
+    tool = vimdiff
+    log = 100
+    ff = false
+
+[diff]
+    tool = vimdiff
+    colorMoved = default
+
+[difftool]
+    prompt = false
+    trustExitCode = true
+
+[help]
+    autocorrect = prompt
+
+[init]
+    defaultBranch = main
+
+[branch]
+    autoSetupMerge = true
+    sort = -committerdate
+
+[stash]
+    showPatch = true
+
+[rerere]
+    enabled = true
+
+[credential]
+    helper = cache --timeout=3600
+
+[http]
+    postBuffer = 524288000
+
+[transfer]
+    fsckobjects = true
+
+[receive]
+    advertisePushOptions = true
+    fsckobjects = true
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[protocol]
+    version = 2
+
+[oh-my-zsh]
+    hide-status = 1
+    hide-dirty = 1
